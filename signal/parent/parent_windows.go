@@ -2,14 +2,15 @@ package main
 
 import (
 	"bufio"
-	"golang.org/x/sys/windows"
 	"log"
 	"os"
 	"os/exec"
 	"syscall"
+
+	"golang.org/x/sys/windows"
 )
 
-func main()  {
+func main() {
 	cmd := exec.Command("../child/child.exe")
 	// パイプを作る
 	stdout, err := cmd.StdoutPipe()
@@ -52,8 +53,9 @@ func main()  {
 		select {
 		case <-stdoutDoneChan:
 			stillGoing = false
+			log.Println("parent: stdoutDoneChan")
 		case line := <-stdoutOutputChan:
-			log.Println("parent:", line)
+			log.Println("parent(stdout):", line)
 			switch line {
 			case "ready":
 				if err := terminateProc(cmd.Process.Pid); err != nil {
@@ -70,9 +72,11 @@ func main()  {
 				os.Exit(0)
 			}
 		case line := <-stderrOutputChan:
-			log.Println("parent: ", line)
+			log.Println("parent(stderr):", line)
 		}
 	}
+	log.Println("parent: end")
+	os.Exit(0)
 }
 
 func terminateProc(pid int) error {
@@ -103,7 +107,7 @@ func terminateProc(pid int) error {
 	if err != nil {
 		return err
 	}
-	r1, _, err = f.Call(windows.CTRL_BREAK_EVENT, uintptr(pid))
+	r1, _, err = f.Call(windows.CTRL_C_EVENT, uintptr(pid))
 	if r1 == 0 {
 		return err
 	}

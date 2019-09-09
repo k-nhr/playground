@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/k-nhr/mmap/lib"
+	"github.com/k-nhr/playground/mmap/lib"
 )
 
 func main() {
