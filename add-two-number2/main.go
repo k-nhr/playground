@@ -55,20 +55,10 @@ type ListNode struct {
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	r1 := reverse(slice2string(list2slice(l1)))
-	fmt.Println("r1: ", r1)
-
 	r2 := reverse(slice2string(list2slice(l2)))
-	fmt.Println("r2: ", r2)
-
 	total := add(r1, r2)
-	fmt.Println("total: ", total)
-
 	str := reverse(total)
-	fmt.Println("str: ", str)
-
 	s := string2slice(str)
-	fmt.Println("s: ", s)
-
 	l := slice2list(s)
 	return l
 }
@@ -131,11 +121,7 @@ func reverse(s string) string {
 }
 
 func add(s1, s2 string) string {
-	fmt.Println("s1: ", s1)
-	fmt.Println("s2: ", s2)
 	i1, _ := strconv.ParseUint(s1, 10, 64)
-	fmt.Println("i1: ", i1)
 	i2, _ := strconv.ParseUint(s2, 10, 64)
-	fmt.Println("i2: ", i2)
 	return strconv.FormatUint(i1+i2, 10)
 }
