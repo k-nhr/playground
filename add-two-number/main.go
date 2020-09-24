@@ -3,16 +3,17 @@ package main
 import "fmt"
 
 func main() {
-	l1_4 := &ListNode{9, nil}
-
-	l1_3 := &ListNode{3, l1_4}
-	l2_3 := &ListNode{9, nil}
-
-	l1_2 := &ListNode{2, l1_3}
-	l2_2 := &ListNode{8, l2_3}
-
+	l1_7 := &ListNode{1, nil}
+	l1_6 := &ListNode{0, l1_7}
+	l1_5 := &ListNode{0, l1_6}
+	l1_4 := &ListNode{0, l1_5}
+	l1_3 := &ListNode{0, l1_4}
+	l1_2 := &ListNode{0, l1_3}
 	l1_head := &ListNode{1, l1_2}
-	l2_head := &ListNode{7, l2_2}
+
+	l2_3 := &ListNode{5, nil}
+	l2_2 := &ListNode{6, l2_3}
+	l2_head := &ListNode{4, l2_2}
 
 	l := addTwoNumbers(l1_head, l2_head)
 	fmt.Println(l)
