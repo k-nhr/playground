@@ -3,7 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	l1_3 := &ListNode{3, nil}
+	l1_4 := &ListNode{9, nil}
+
+	l1_3 := &ListNode{3, l1_4}
 	l2_3 := &ListNode{9, nil}
 
 	l1_2 := &ListNode{2, l1_3}
@@ -24,15 +26,21 @@ type ListNode struct {
 }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	s1 := listToSlice(l1)
-	s2 := listToSlice(l2)
-	s := addition(s1, s2)
-	l := sliceToList(s)
+	s1 := toSlice(l1)
+	fmt.Println(s1)
+
+	s2 := toSlice(l2)
+	fmt.Println(s2)
+
+	s := add(s1, s2)
+	fmt.Println(s)
+
+	l := toList(s)
 	return l
 }
 
-func listToSlice(l *ListNode) []int {
-	s := make([]int, getListLen(l), getListLen(l))
+func toSlice(l *ListNode) []int {
+	s := make([]int, numberOfNode(l), numberOfNode(l))
 	i := 0
 	for cur := l; cur != nil; cur = cur.Next {
 		s[i] = cur.Val
@@ -41,7 +49,7 @@ func listToSlice(l *ListNode) []int {
 	return s
 }
 
-func getListLen(l *ListNode) int {
+func numberOfNode(l *ListNode) int {
 	i := 0
 	for cur := l; cur != nil; i++ {
 		tmp := cur.Next
@@ -50,7 +58,7 @@ func getListLen(l *ListNode) int {
 	return i
 }
 
-func addition(s1, s2 []int) []int {
+func add(s1, s2 []int) []int {
 	total := []int{}
 	l1 := len(s1)
 	l2 := len(s2)
@@ -85,7 +93,7 @@ func addition(s1, s2 []int) []int {
 	return total
 }
 
-func sliceToList(s []int) *ListNode {
+func toList(s []int) *ListNode {
 	head := &ListNode{}
 	cur := head
 	len := len(s)
