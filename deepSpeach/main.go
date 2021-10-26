@@ -5,7 +5,7 @@ import (
 	"flag"
 	"log"
 
-	"github.com/k-nhr/playground/deepSpeach2/client"
+	"github.com/k-nhr/playground/deepSpeach/client"
 )
 
 func main() {
