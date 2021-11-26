@@ -18,7 +18,7 @@ func main() {
 	}
 	defer file.Close()
 
-	creds := credentials.NewStaticCredentials("AKIARBKURC7KGHSBU34M", "xJXKv2Td9q630tSafhPayEpHJTXaBGyq18t204A4", "")
+	creds := credentials.NewStaticCredentials("", "", "")
 
 	sess, err := session.NewSession(&aws.Config{
 		Credentials: creds,

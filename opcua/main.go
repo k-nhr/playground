@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/kzyn/opcua/bridge"
+	opcua "github.com/k-nhr/playground/opcua/bridge"
 )
 
 func main() {
