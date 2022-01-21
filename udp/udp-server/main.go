@@ -13,18 +13,15 @@ const (
 func main() {
 	p := flag.Int("port", 51301, "specify the port for the UDP server")
 	flag.Parse()
-	log.Printf("listen port: %d", *p)
 
 	udpAddr := &net.UDPAddr{
-		IP:   net.ParseIP("localhost"),
+		//IP:   net.ParseIP("localhost"),
+		IP:   net.ParseIP("0.0.0.0"),
 		Port: *p,
 	}
-	//listenAddress, err := net.ResolveUDPAddr("udp", fmt.Sprintf("%s:%s", "", *p))
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
+	log.Println(udpAddr.String())
 
-	listener, err := net.ListenUDP("udp", udpAddr)
+	listener, err := net.ListenUDP("udp4", udpAddr)
 	if err != nil {
 		log.Fatal(err)
 	}
