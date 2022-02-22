@@ -15,7 +15,7 @@ func main() {
 
 	url := fmt.Sprintf("%s:%d", *host, *port)
 	log.Println("send to: ", url)
-	conn, err := net.Dial("udp", url)
+	conn, err := net.Dial("udp4", url)
 	if err != nil {
 		log.Fatal(err)
 	}

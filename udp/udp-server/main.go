@@ -15,7 +15,6 @@ func main() {
 	flag.Parse()
 
 	udpAddr := &net.UDPAddr{
-		//IP:   net.ParseIP("localhost"),
 		IP:   net.ParseIP("0.0.0.0"),
 		Port: *p,
 	}
